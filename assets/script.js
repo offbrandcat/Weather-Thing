@@ -1,4 +1,5 @@
 var currentDate = dayjs();
+var APIKey = "9ae2cf33adf665c4618217cea9c0ef05"
 
 document.querySelector("#search").addEventListener('click', function (event) {
     event.preventDefault();
@@ -9,7 +10,7 @@ document.querySelector("#search").addEventListener('click', function (event) {
     
     document.querySelector("#searchArea").appendChild(newSearch)
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=9ae2cf33adf665c4618217cea9c0ef05&units=imperial&speed=miles/hour`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${APIKey}&units=imperial&speed=miles/hour`)
         .then(function (response) {
             return response.json()
         })
@@ -21,7 +22,7 @@ document.querySelector("#search").addEventListener('click', function (event) {
             document.querySelector(`#h0`).textContent = `Humidity: ${data.main.humidity.toString()}%`;
         });
 
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&appid=9ae2cf33adf665c4618217cea9c0ef05&units=imperial&speed=miles/hour`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&appid=${APIKey}&units=imperial&speed=miles/hour`)
         .then(function (response) {
             return response.json()
         })
